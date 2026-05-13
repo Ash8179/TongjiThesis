@@ -1,46 +1,75 @@
+% ============================================================
+%  main.tex —— 同济大学本科毕业论文主文件
+%  基于计算流体动力学（CFD）的打印混凝土挤出流场分析
+% ============================================================
+
 \documentclass[
-  oneside,
-  degree=bachelor,
-  field=science,
-  fullwidthstop=circle,
-  fontset=fandol,
-  times=false,
-  minted=true,
-  biblatex=true,
+  oneside,           % 单面排版
+  degree=bachelor,   % 本科
+  field=science,     % 理工科（土木工程）
+  fontset=fandol,    % 字体集
+  biblatex=true,     % 使用 BibLaTeX
+  minted=false       % 不使用minted（避免shell-escape编译依赖）
 ]{tongjithesis}
 
-\tjbibresource{bib/note.bib}
+% ============================================================
+%  参考文献数据库
+% ============================================================
+\tjbibresource{references.bib}
+
+% ============================================================
+%  文档信息（封面、信息说明页、摘要）
+% ============================================================
+\input{chapters/metadata}
 
 \begin{document}
 
-\input{chapters/metadata}
+% 封面
 \MakeCover
-\cleardoublepage
-\MakeInfoPage
-\cleardoublepage
 
+% 信息说明页
+\MakeInfoPage
+
+% ============================================================
+%  前置部分（页码：大写罗马数字）
+% ============================================================
 \frontmatter
+
+% 中英文摘要
 \input{chapters/00_abstract}
 
-\clearpage
+% 目录
 \tableofcontents
-% \listoffigures   % 插图清单（根据需要取消注释）
-% \listoftables    % 表格清单（根据需要取消注释）
-\cleardoublepage
+% \listoffigures
+% \listoftables
 
+% ============================================================
+%  正文部分（页码：阿拉伯数字，从1开始）
+% ============================================================
 \mainmatter
-\input{chapters/01_guide}
-\input{chapters/02_intro}
-\input{chapters/03_float}
-\input{chapters/04_math}
-\input{chapters/05_reference}
-\input{chapters/06_conclusion}
 
+\input{chapters/01_introduction}
+\input{chapters/02_model}
+\input{chapters/03_baseline}
+\input{chapters/04_parametric}
+\input{chapters/05_optimization}
+\input{chapters/06_discussion}
+\input{chapters/07_conclusion}
+
+% ============================================================
+%  参考文献
+% ============================================================
 \makereferences
 
+% ============================================================
+%  附录
+% ============================================================
 \appendix
 \input{chapters/appendix}
 
+% ============================================================
+%  谢辞（取消章编号，页码继续）
+% ============================================================
 \backmatter
 \input{chapters/ack}
 
